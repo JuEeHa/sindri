@@ -1,4 +1,5 @@
 #include <stddef.h>
+#include <stdbool.h>
 #include <stdlib.h>
 #include "sindri.h"
 #include "types.h"
@@ -31,4 +32,14 @@ sindri_alloc_cons(sindri_heap *heap) {
 	cons->car = NULL;
 	cons->cdr = NULL;
 	return cons;
+}
+
+sindri_integer*
+sindri_alloc_integer(sindri_heap *heap) {
+	sindri_integer *integer;
+	integer = (sindri_integer*)sindri_alloc_object(heap, INTEGER);
+	integer->size = 0;
+	integer->negative = false;
+	integer->digits = NULL;
+	return integer;
 }

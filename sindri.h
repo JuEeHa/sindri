@@ -1,5 +1,5 @@
 /* Datatypes */
-typedef enum {CONS} sindri_objtype;
+typedef enum {CONS, INTEGER} sindri_objtype;
 
 struct sindri_object {
 	sindri_objtype type;
@@ -12,6 +12,14 @@ struct sindri_cons {
 	struct sindri_object *car, *cdr;
 };
 typedef struct sindri_cons sindri_cons;
+
+struct sindri_integer {
+	sindri_objtype type;
+	size_t size;
+	bool negative;
+	unsigned long *digits;
+};
+typedef struct sindri_integer sindri_integer;
 
 struct sindri_heap {
 	sindri_cons *allocated;

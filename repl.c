@@ -1,4 +1,5 @@
 #include <stddef.h>
+#include <stdbool.h>
 #include <sindri.h>
 
 int
