@@ -26,5 +26,9 @@ sindri_alloc_object(sindri_heap *heap, sindri_objtype type) {
 
 sindri_cons*
 sindri_alloc_cons(sindri_heap *heap) {
-	return (sindri_cons*)sindri_alloc_object(heap, CONS);
+	sindri_cons *cons;
+	cons = (sindri_cons*)sindri_alloc_object(heap, CONS);
+	cons->car = NULL;
+	cons->cdr = NULL;
+	return cons;
 }
