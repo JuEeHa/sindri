@@ -28,18 +28,26 @@ sindri_alloc_object(sindri_heap *heap, sindri_objtype type) {
 sindri_cons*
 sindri_alloc_cons(sindri_heap *heap) {
 	sindri_cons *cons;
+	
 	cons = (sindri_cons*)sindri_alloc_object(heap, CONS);
+	if(cons == NULL)
+		return NULL;
 	cons->car = NULL;
 	cons->cdr = NULL;
+	
 	return cons;
 }
 
 sindri_integer*
 sindri_alloc_integer(sindri_heap *heap) {
 	sindri_integer *integer;
+	
 	integer = (sindri_integer*)sindri_alloc_object(heap, INTEGER);
+	if(integer == NULL)
+		return NULL;
 	integer->size = 0;
 	integer->negative = false;
 	integer->digits = NULL;
+	
 	return integer;
 }
